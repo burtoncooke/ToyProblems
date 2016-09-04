@@ -17,12 +17,9 @@
 var asyncMap = function(tasks, callback){
   
   var promisedResults = tasks.map(task => {
-    return new Promise(function(resolve) {
-      task(resolve)
-    })
+    return new Promise(resolve => task(resolve));
   })
   
   Promise.all(promisedResults)
   .then(results => callback(results))
-  
-  };  
+};  
